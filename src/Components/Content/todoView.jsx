@@ -32,7 +32,6 @@ const TodoView = observer(({task}) => {
             <div className="user-select">
                 Приоритет: {priorityType.filter((item) => {return item.id === task.priorityId})[0].priority}
             </div>
-            <button>Сохранить</button>
         </div>
     )
 }
