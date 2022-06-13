@@ -23,15 +23,16 @@ const Content = observer(() => {
                     {`Пользователь: ${user._user.login}`}
                     <span>Ваш руководитель: {user._user.supervisor ? user._user.supervisor.login : '-'}</span>
                 </div>
-                <button onClick={() => {setContent(<TodoMaker ></TodoMaker>)}}>Создать задание</button>
+                <button onClick={() => {setContent(<TodoMaker ></TodoMaker>)}}>Новое задание</button>
                 <hr />
-                <div>Ваши задания:</div>
+                <div className="task__list-tasks">Ваши задания:</div>
                     {tasks.length ? tasks.map(task => 
-                        
-                        <div className="task" key={task.id} onClick={() => setContent(<TodoView task={task}></TodoView>)}>
+                        <div className="task"
+                        style={task.statusId === 3 ? {color: "green"} : null || new Date(task.end_date) < new Date(Date.now()) ? {color: 'red'} : null} 
+            
+                        key={task.id} onClick={() => setContent(<TodoView task={task}></TodoView>)}>
                             {task.title}
-                        </div>
-                        
+                        </div> 
                     ) : null}
             </div>
             <div className="tasks__view">
